@@ -2,9 +2,11 @@ import { createStackNavigator } from 'react-navigation-stack';
 import NewsListScreen from '../screens/NewsListScreen';
 import NewsItemScreen from '../screens/NewsItemScreen';
 import { createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import FavoriteScreens from '../screens/FavouriteScreen';
 
 
-const AppNavigator = createStackNavigator({
+const StackNavigator = createStackNavigator({
     News: {
         screen: NewsListScreen
 
@@ -19,4 +21,15 @@ const AppNavigator = createStackNavigator({
     }
 })
 
-export default createAppContainer(AppNavigator);
+
+const BottomTabNavigator = createBottomTabNavigator({
+    Home: {
+        screen: StackNavigator
+    },
+    Favorites: {
+        screen: FavoriteScreens
+    }
+})
+
+
+export default createAppContainer(BottomTabNavigator);
